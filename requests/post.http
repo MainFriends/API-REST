@@ -1,0 +1,7 @@
+POST http://localhost:4000/api/role
+Content-Type: application/json
+
+{
+    "NAM_ROLE": "Supervisor",
+    "DES_ROLE": "Supervisan todo"
+}
