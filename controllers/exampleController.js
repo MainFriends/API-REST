@@ -1,1 +1,0 @@
-const mysqlConnect = require('../config');

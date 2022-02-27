@@ -1,7 +1,10 @@
+//importamos los paquetes
 const express = require('express');
-const router = require('./routes');
 const bodyParser = require('body-parser');
 require('dotenv').config();
+
+//importamos las api routes
+const user = require('./routes/user');
 
 //crear el servidor
 const app = express();
@@ -10,8 +13,8 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-//rutas
-app.use('/', router());
+//registrar rutas
+app.use('/api', user);
 
 //asignar un puerto y levantar el servidor
 const port = process.env.PORT;

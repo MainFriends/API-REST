@@ -1,10 +1,10 @@
-POST http://localhost:4000/api/user
+PUT http://localhost:4000/api/user/4
 Content-Type: application/json
 
 {
     "IDENTITY": "080119990531",
     "FIRST_NAME": "Mendel",
-    "MIDDLE_NAME": "Eduardo",
+    "MIDDLE_NAME": "Brazchid",
     "LAST_NAME": "Aguilar",
     "GENDER": "M",
     "NUM_PHONE_ONE": 88795976,
@@ -13,6 +13,6 @@ Content-Type: application/json
     "NAM_CITY": "Tegucigalpa",
     "ADDRESS": "Res. Plaza",
     "COD_ROLE": 1,
-    "USER_EMAIL": "mendel@hotmail.com",
+    "USER_EMAIL": "mendelaguilar@hotmail.com",
     "USER_PASSWORD": "1234"
 }
