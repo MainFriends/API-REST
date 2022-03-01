@@ -1,5 +1,24 @@
 const mysqlConnect = require('../config');
 
+const getInvoice = (req, res) => {
+    const query = `SELECT COD_INVOICE, CONCAT(CLIENT.FIRST_NAME, ' ', CLIENT.LAST_NAME) CLIENT, 
+    CONCAT(USER.FIRST_NAME, ' ', USER.LAST_NAME) USER,
+    SUBTOTAL, TOT_DISCOUNT, TOT_ISV, TYP_TO_SALE, NAM_TYPE_PAY, DAT_INVOICE
+    FROM CLIENT, USER, SALES_INVOICE, TYPE_TO_PAY
+    WHERE CLIENT.COD_CLIENT = SALES_INVOICE.COD_CLIENT
+    AND USER.COD_USER = SALES_INVOICE.COD_USER
+    AND TYPE_TO_PAY.COD_TYP_PAY = SALES_INVOICE.COD_TYP_PAY`;
+
+    mysqlConnect.query(query, (err, result) => {
+        if(err){
+            res.status(500).send({message: "Error en el servidor."});
+        }else{
+            res.status(200).json(result);
+            console.log(result)
+        }
+    })
+}
+
 const addInvoice = (req, res) => {
     const {
         COD_CLIENT,
@@ -33,5 +52,6 @@ const addInvoice = (req, res) => {
 }
 
 module.exports = {
-    addInvoice
+    addInvoice,
+    getInvoice
 };
