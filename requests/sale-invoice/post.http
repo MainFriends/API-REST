@@ -1,0 +1,13 @@
+POST http://localhost:4000/api/sale-invoice
+Content-Type: application/json
+
+{
+    "COD_CLIENT": 1,
+    "COD_USER": 1, 
+    "SUBTOTAL": 1500,
+    "TOT_DISCOUNT": 0,
+    "TOT_ISV": 250,
+    "TOT_SALE": 1750,
+    "TYP_TO_SALE": "Contado",
+    "COD_TYP_PAY": 1 
+}
