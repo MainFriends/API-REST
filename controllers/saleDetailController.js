@@ -2,16 +2,13 @@ const mysqlConnect = require('../config');
 
 const getDetail = (req, res) => {
     const {codInvoice} = req.params;
-    const query = `SELECT COD_DETAIL, COD_INVOICE, INVENTORY.COD_PRODUCT, NAM_PRODUCT, PRICE, CANT_PRODUCTS, DISCOUNT, TOTAL
-    FROM SALE_DETAIL, INVENTORY
-    WHERE INVENTORY.COD_PRODUCT = SALE_DETAIL.COD_PRODUCT
-    AND COD_INVOICE = ${codInvoice}`;
+    const sp = 'CALL SP_SEL_SALE_DETAIL(?)';
 
-    mysqlConnect.query(query, (err, result) => {
+    mysqlConnect.query(sp, [codInvoice], (err, result) => {
         if(err){
             res.status(500).send({message: "Error en el servidor."});
         }else{
-            res.status(200).json(result);
+            res.status(200).json(result[0]);
         }
     })
 };

@@ -1,42 +1,29 @@
 const mysqlConnect = require('../config');
 
 const getInvoices = (req, res) => {
-    const query = `SELECT COD_INVOICE, CONCAT(CLIENT.FIRST_NAME, ' ', CLIENT.LAST_NAME) CLIENT, 
-    CONCAT(USER.FIRST_NAME, ' ', USER.LAST_NAME) USER,
-    SUBTOTAL, TOT_DISCOUNT, TOT_ISV, TYP_TO_SALE, NAM_TYPE_PAY, DAT_INVOICE
-    FROM CLIENT, USER, SALES_INVOICE, TYPE_TO_PAY
-    WHERE CLIENT.COD_CLIENT = SALES_INVOICE.COD_CLIENT
-    AND USER.COD_USER = SALES_INVOICE.COD_USER
-    AND TYPE_TO_PAY.COD_TYP_PAY = SALES_INVOICE.COD_TYP_PAY`;
+    const sp = `CALL SP_SEL_SALES_INVOICE(?)`;
 
-    mysqlConnect.query(query, (err, result) => {
+    mysqlConnect.query(sp, [0], (err, result) => {
         if(err){
             res.status(500).send({message: "Error en el servidor."});
         }else{
-            res.status(200).json(result);
+            res.status(200).json(result[0]);
         }
-    })
+    });
 }
 
 const getInvoice = (req, res) => {
     const {codInvoice} = req.params;
 
-    const query = `SELECT COD_INVOICE, CONCAT(CLIENT.FIRST_NAME, ' ', CLIENT.LAST_NAME) CLIENT, 
-    CONCAT(USER.FIRST_NAME, ' ', USER.LAST_NAME) USER,
-    SUBTOTAL, TOT_DISCOUNT, TOT_ISV, TYP_TO_SALE, NAM_TYPE_PAY, DAT_INVOICE
-    FROM CLIENT, USER, SALES_INVOICE, TYPE_TO_PAY
-    WHERE CLIENT.COD_CLIENT = SALES_INVOICE.COD_CLIENT
-    AND USER.COD_USER = SALES_INVOICE.COD_USER
-    AND TYPE_TO_PAY.COD_TYP_PAY = SALES_INVOICE.COD_TYP_PAY
-    AND COD_INVOICE = ${codInvoice}`;
+    const sp = `CALL SP_SEL_SALES_INVOICE(?)`;
 
-    mysqlConnect.query(query, (err, result) => {
+    mysqlConnect.query(sp, [codInvoice], (err, result) => {
         if(err){
             res.status(500).send({message: "Error en el servidor."});
         }else{
-            res.status(200).json(result);
+            res.status(200).json(result[0]);
         }
-    })
+    });
 }
 
 const addInvoice = (req, res) => {
