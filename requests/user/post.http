@@ -2,8 +2,8 @@ POST http://localhost:4000/api/user
 Content-Type: application/json
 
 {
-    "IDENTITY": "080119990531",
-    "FIRST_NAME": "Mendel",
+    "IDENTITY": "2005100543",
+    "FIRST_NAME": "Josué",
     "MIDDLE_NAME": "Eduardo",
     "LAST_NAME": "Aguilar",
     "GENDER": "M",
@@ -12,7 +12,7 @@ Content-Type: application/json
     "DAT_BIRTHDAY": "1998-02-12",
     "NAM_CITY": "Tegucigalpa",
     "ADDRESS": "Res. Plaza",
-    "COD_ROLE": 1,
-    "USER_EMAIL": "mendel@hotmail.com",
+    "COD_ROLE": 2,
+    "USER_EMAIL": "josue@hotmail.com",
     "USER_PASSWORD": "1234"
 }

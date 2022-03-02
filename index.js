@@ -17,9 +17,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 //registrar rutas
 app.use('/api', user);
 app.use('/api', payForm);
-app.get('/', (req, res) => {
-    res.send('<h1> Aplicación </h1>')
-})
+
 
 //asignar un puerto y levantar el servidor
 const port = process.env.PORT;
