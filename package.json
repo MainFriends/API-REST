@@ -1,7 +1,7 @@
 {
   "name": "api-mysql",
   "version": "1.0.0",
-  "description": "",
+  "description": "Antes de todo, es necesario instalar las dependencias requeridas para el funcionamiento de la API. Para eso ejecutar el comando:  \r ```bash\r npm i\r   ```",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js"
@@ -16,5 +16,13 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MainFriends/API-REST.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MainFriends/API-REST/issues"
+  },
+  "homepage": "https://github.com/MainFriends/API-REST#readme"
 }
