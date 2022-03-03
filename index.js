@@ -6,6 +6,7 @@ require('dotenv').config();
 //importamos las api routes
 const user = require('./routes/user');
 const payForm = require('./routes/payForm');
+const accReceivable = require('./routes/accReceivable');
 
 //crear el servidor
 const app = express();
@@ -17,6 +18,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 //registrar rutas
 app.use('/api', user);
 app.use('/api', payForm);
+app.use('/api/', accReceivable);
 
 
 //asignar un puerto y levantar el servidor
