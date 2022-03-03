@@ -1,29 +1,30 @@
 const mysqlConnect = require('../config');
+const bcrypt = require('bcrypt');
 
 const getUsers = (req, res) => {
-    query = 'SELECT * FROM USER';
-    mysqlConnect.query(query, (err, result) => {
+    const sp = 'CALL SP_SEL_USER(?)';
+    mysqlConnect.query(sp, [0], (err, result) => {
         if(err){
             res.status(500).send({message: "Error en el servidor."});
         }else{
-            res.status(200).json(result);
+            res.status(200).json(result[0]);
         }
     });
 };
 
 const getUser = (req, res) => {
     const {codUser} = req.params;
-    query = `SELECT * FROM USER WHERE COD_USER = ${codUser}`;
-    mysqlConnect.query(query, (err, result) => {
+    const sp = 'CALL SP_SEL_USER(?)';
+    mysqlConnect.query(sp, [codUser], (err, result) => {
         if(err){
             res.status(500).send({message: "Error en el servidor."});
         }else{
-            res.status(200).json(result)
+            res.status(200).json(result[0])
         }
     });
 };
 
-const addUser = (req, res) => {
+const addUser = async (req, res) => {
     const {
         IDENTITY,
         FIRST_NAME,
@@ -41,6 +42,8 @@ const addUser = (req, res) => {
         USER_EMAIL,
         USER_PASSWORD
     } = req.body;
+
+    const USER_PASSWORD_HASH = await bcrypt.hash(USER_PASSWORD, 10);
 
     const sp = 'CALL SP_INS_USER(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
 
@@ -60,7 +63,7 @@ const addUser = (req, res) => {
         IMG_USER,
         COD_ROLE,
         USER_EMAIL,
-        USER_PASSWORD
+        USER_PASSWORD_HASH
     ], (err) => {
         if(err){
             res.status(400).send({message: err.message});
@@ -121,8 +124,8 @@ const updateUser = (req, res) => {
 
 const deleteUser = (req, res) => {
     const {codUser} = req.params;
-    const query = `DELETE FROM USER WHERE COD_USER = ${codUser}`;
-    mysqlConnect.query(query, (err) => {
+    const sp = `CALL SP_DEL_USER(?)`;
+    mysqlConnect.query(sp, [codUser], (err) => {
         if(err){
             res.status(304).send({message: err.message});
         }else{
