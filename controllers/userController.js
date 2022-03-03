@@ -8,6 +8,7 @@ const getUsers = (req, res) => {
             res.status(500).send({message: "Error en el servidor."});
         }else{
             res.status(200).json(result[0]);
+            console.log(req.user);
         }
     });
 };

@@ -1,18 +1,19 @@
 POST http://localhost:4000/api/user
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDT0RfUk9MRSI6MSwiRklSU1RfTkFNRSI6Ikx1aXMiLCJMQVNUX05BTUUiOiJHYXJjaWEiLCJpYXQiOjE2NDYzNDkzODl9.BkFJDsJKUCWsP2bI0UAjqJc-rnFODARMFEIzBgko3vk
 
 {
-    "IDENTITY": "080119990512",
-    "FIRST_NAME": "Luis",
-    "MIDDLE_NAME": "Eduardo",
-    "LAST_NAME": "Garcia",
+    "IDENTITY": "080119990511",
+    "FIRST_NAME": "Pedro",
+    "MIDDLE_NAME": "Mauricio",
+    "LAST_NAME": "Sanchez",
     "GENDER": "M",
-    "NUM_PHONE_ONE": 88795977,
+    "NUM_PHONE_ONE": 88795900,
     "NUM_PHONE_REFERENCE": 78451236,
     "DAT_BIRTHDAY": "1998-02-12",
     "NAM_CITY": "Tegucigalpa",
     "ADDRESS": "Res. Plaza",
     "COD_ROLE": 1,
-    "USER_EMAIL": "luis@hotmail.com",
-    "USER_PASSWORD": "1234"
+    "USER_EMAIL": "pedro@hotmail.com",
+    "USER_PASSWORD": "Hook23"
 }
