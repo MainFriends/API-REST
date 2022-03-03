@@ -67,7 +67,8 @@ const addUser = async (req, res) => {
         USER_PASSWORD_HASH
     ], (err) => {
         if(err){
-            res.status(400).send({message: err.message});
+            const message = err.message.split(': ')[1];
+            res.status(400).send({message});
         }else{
             res.status(201).send({message: 'El usuario ha sido creado correctamente.'});
         }
@@ -116,7 +117,8 @@ const updateUser = (req, res) => {
             USER_PASSWORD
         ], (err) => {
             if(err){
-                res.status(304).send({message: err.message});
+                const message = err.message.split(': ')[1];
+                res.status(400).send({message});
             }else{
                 res.status(200).send({message: 'El usuario ha sido modificado.'});
             }
