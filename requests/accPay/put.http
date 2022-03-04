@@ -1,0 +1,9 @@
+PUT http://localhost:4000/api/accounts-pay/2
+Content-Type: application/json
+
+{
+    "COD_INVOICE": 2,
+	"DESCRIPTION": "Deuda",
+    "TOT_BALANCE": 500.00,
+    "DATE_LIMIT": "2022-03-04"
+}

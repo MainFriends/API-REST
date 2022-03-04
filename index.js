@@ -7,6 +7,7 @@ require('dotenv').config();
 const user = require('./routes/user');
 const payForm = require('./routes/payForm');
 const accReceivable = require('./routes/accReceivable');
+const accPay = require('./routes/accPay');
 
 //crear el servidor
 const app = express();
@@ -19,6 +20,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use('/api', user);
 app.use('/api', payForm);
 app.use('/api/', accReceivable);
+app.use('/api/', accPay);
 
 
 //asignar un puerto y levantar el servidor

@@ -2,7 +2,7 @@ PUT http://localhost:4000/api/pay-form/3
 Content-Type: application/json
 
 {
-    "COD_USER": 3,
+    "COD_USER": 4,
 	"HOURS_WORKED": 6,
     "AMO_GROSS": 20000.00,
     "BONUS": 1500.00,

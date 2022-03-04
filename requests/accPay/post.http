@@ -1,0 +1,9 @@
+POST http://localhost:4000/api/accounts-pay
+Content-Type: application/json
+
+{
+    "COD_INVOICE" : 4,
+    "DESCRIPTION" : "Deuda a pagar",
+    "TOT_BALANCE" : 2000.05,
+    "DATE_LIMIT" : "2022-03-22"
+}
