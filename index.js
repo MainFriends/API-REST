@@ -7,6 +7,7 @@ require('dotenv').config();
 const user = require('./routes/user');
 const saleInvoice = require('./routes/saleInvoice');
 const saleDetail = require('./routes/saleDetail');
+const notifications = require('./routes/notifications');
 
 //crear el servidor
 const app = express();
@@ -19,6 +20,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use('/api', user);
 app.use('/api', saleInvoice);
 app.use('/api', saleDetail);
+app.use('/api', notifications);
 
 //asignar un puerto y levantar el servidor
 const port = process.env.PORT;
