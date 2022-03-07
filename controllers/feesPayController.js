@@ -1,32 +1,32 @@
 const mysqlConnect = require('../config');
 
-const getFeesReceivable = (req, res) => {
-    const {codAccReceivable} = req.params;
-    const sp = "CALL SP_SEL_FEES_RECEIVABLE(?)";
-    mysqlConnect.query(sp,[codAccReceivable], (err, result) => {
+const getFeesPay = (req, res) => {
+    const {codAccPay} = req.params;
+    const sp = "CALL SP_SEL_FEES_TO_PAY(?)";
+    mysqlConnect.query(sp, [codAccPay], (err, result) => {
         if(err){
             const message = err.message.split(': ')[1];
             res.status(500).send({message});
         }else{
             res.status(200).json(result[0]);
         }
-    });
+    })
 }
 
-const addFeesReceivable = (req, res) => {
+const addFeesPay = (req, res) => {
     const {
-        COD_ACC_RECEIVABLE,
+        COD_ACC_PAY,
         AMOUNT,
-        DAT_PAY,
+        DATE_PAY,
         COD_TYP_PAY
     } = req.body;
 
-    const sp = "CALL SP_INS_FEES_RECEIVABLE(?,?,?,?)";
+    const sp = "CALL SP_INS_FEES_TO_PAY(?,?,?,?)";
 
     mysqlConnect.query(sp, [
-        COD_ACC_RECEIVABLE,
+        COD_ACC_PAY,
         AMOUNT,
-        DAT_PAY,
+        DATE_PAY,
         COD_TYP_PAY
     ], (err) => {
         if(err){
@@ -38,10 +38,10 @@ const addFeesReceivable = (req, res) => {
     })
 }
 
-const deleteFeesReceivable = (req, res) => {
-    const {codFeesReceivable} = req.params;
-    const sp = "CALL SP_DEL_FEES_RECEIVABLE(?)";
-    mysqlConnect.query(sp, [codFeesReceivable], (err) => {
+const deleteFeesPay = (req, res) => {
+    const {codFeesPay} = req.params;
+    const sp = "CALL SP_DEL_FEES_TO_PAY(?)";
+    mysqlConnect.query(sp, [codFeesPay], (err) => {
         if(err){
             const message = err.message.split(': ')[1];
             res.status(500).send({message});
@@ -52,7 +52,7 @@ const deleteFeesReceivable = (req, res) => {
 }
 
 module.exports = {
-    getFeesReceivable,
-    addFeesReceivable,
-    deleteFeesReceivable
+    getFeesPay,
+    addFeesPay,
+    deleteFeesPay
 }

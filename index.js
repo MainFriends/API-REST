@@ -9,6 +9,7 @@ const payForm = require('./routes/payForm');
 const accReceivable = require('./routes/accReceivable');
 const accPay = require('./routes/accPay');
 const feesReceivable = require('./routes/feesReceivable');
+const feesPay = require('./routes/feesPay');
 
 //crear el servidor
 const app = express();
@@ -23,6 +24,7 @@ app.use('/api', payForm);
 app.use('/api/', accReceivable);
 app.use('/api/', accPay);
 app.use('/api', feesReceivable);
+app.use('/api', feesPay);
 
 
 //asignar un puerto y levantar el servidor
