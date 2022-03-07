@@ -1,24 +1,24 @@
 const mysqlConnect = require('../config');
 
-const getPurchaseinv = (req, res) => {
-    query = 'SELECT * FROM PURCHASE_INVOICE';
-    mysqlConnect.query(query, (err, result) => {
+const getPurchase = (req, res) => {
+    const sp = 'CALL SP_SELL_PURCHASE_INVOICE(?)';
+    mysqlConnect.query(sp,[0], (err, result) => {
         if(err){
             res.status(500).send({message: "Error en el servidor."});
         }else{
-            res.status(200).json(result);
+            res.status(200).json(result[0]);
         }
     });
 };
 
-const getPurchaseinv = (req, res) => {
+const getPurchase = (req, res) => {
     const {codInvoice} = req.params;
-    query = `SELECT * FROM PURCHASE_INVOICE WHERE COD_INVOICE = ${codInvoice}`;
-    mysqlConnect.query(query, (err, result) => {
+    const sp = 'CALL SP_SELL_PURCHASE_INVOICE(?)';
+    mysqlConnect.query(sp, [codInvoice] ,(err, result) => {
         if(err){
             res.status(500).send({message: "Error en el servidor."});
         }else{
-            res.status(200).json(result)
+            res.status(200).json(result[0])
         }
     });
 };
@@ -51,7 +51,7 @@ mysqlConnect.query(sp,
     if(err){
         res.status(400).send({message: err.message});
     }else{
-        res.status(201).send({message: 'La factura se ha creado correctamente.'});
+        res.status(201).send({message: 'Transaccion completada.'});
     }
 }); 
 };  
@@ -85,12 +85,29 @@ const updatePurchase = (req,res)=>{
             if(err){
                 res.status(400).send({message: err.message});
             }else{
-                res.status(201).send({message: 'La factura se ha actualizado correctamente.'});
+                res.status(201).send({message: 'Transaccion completada.'});
             }
         }); 
         };  
 
+        const deletePurchase = (req, res) => {
+            const {codInvoice} = req.params;
+            const sp = 'CALL SP_DEL_PURCHASE_INVOICE(?)';
+            mysqlConnect.query(sp,[codInvoice], (err) => {
+                if(err){
+                    res.status(304).send({message: err.message});
+                }else{
+                    res.status(200).send({message: 'Transaccion completada.'});
+                }
+            })
+        };
 
-
+        module.exports = {
+            getPurchase,
+            getPurchase,
+            addPurchase,
+            updatePurchase,
+            deletePurchase
+        };
 
 
