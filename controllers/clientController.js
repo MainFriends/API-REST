@@ -2,7 +2,7 @@ const { NULL } = require('mysql/lib/protocol/constants/types');
 const mysqlConnect= require('../config');
 
 
-const getClient=(req,res) => {
+const getClients=(req,res) => {
     const query= 'SELECT * FROM CLIENT'
     mysqlConnect.query(query,(err,result) => {
 
@@ -22,7 +22,6 @@ const AddClient=  (req,res) =>{
         NUM_PHONE_ONE,
         NUM_PHONE_TWO = NULL,
         RTN 
-
     } = req.body
 
     console.log(req.body)
@@ -30,7 +29,7 @@ const AddClient=  (req,res) =>{
 
 
 
-    const sp= 'CALL SP_INS_CLIENT(?,?,?,?,?,?.?)';
+    const sp= 'CALL SP_INS_CLIENT(?,?,?,?,?,?,?)';
     mysqlConnect.query(sp,[
 
         IDENTITY,
@@ -70,7 +69,7 @@ const UpdateClient= (req,res) =>{
 
 
 
-    const sp= 'CALL SP_UPD_CLIENT (?,?,?,?,?,?.?)';
+    const sp= 'CALL SP_UPD_CLIENT (?,?,?,?,?,?,?)';
     mysqlConnect.query(sp,[
 
         IDENTITY,
@@ -103,7 +102,7 @@ const deleteClient = (req, res) => {
     })
 };
 module.exports={
-    getClient,
+    getClients,
     AddClient,
     UpdateClient,
     deleteClient

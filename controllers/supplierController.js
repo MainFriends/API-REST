@@ -32,7 +32,7 @@ const AddSupplier= (req,res) =>{
 
 
 
-    const sp= 'CALL SP_INS_SUPPLIER(?,?,?,?,?,?.?,?,?)';
+    const sp= 'CALL SP_INS_SUPPLIER(?,?,?,?,?,?,?,?,?)';
     mysqlConnect.query(sp,[
 
         NAM_SUPPLIER,
@@ -50,13 +50,16 @@ const AddSupplier= (req,res) =>{
         if(err){
             res.status(400). send({message: err.message});
         }else{
-            res.status(201).send({message:'El proveedor  no ha sido registrado correctamente'});
+            res.status(201).send({message:'El proveedor ha sido registrado correctamente'});
         }
     });
 
 }
 
 const UpdateSupplier= (req,res) =>{
+    const {codSupplier} = req.params;
+    console.log(codSupplier)
+
     const {
                                 NAM_SUPPLIER,
 								NAM_CONTACT,
@@ -70,14 +73,9 @@ const UpdateSupplier= (req,res) =>{
 
     } = req.body
 
-    console.log(req.body)
-
-
-
-
-    const sp= 'CALL SP_UPD_SUPPLIER (?,?,?,?,?,?.?,?,?)';
+    const sp= 'CALL SP_UPD_SUPPLIER (?,?,?,?,?,?,?,?,?,?)';
     mysqlConnect.query(sp,[
-
+        codSupplier,
         NAM_SUPPLIER,
         NAM_CONTACT,
         LAST_NAM_CONTACT,

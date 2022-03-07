@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const clientController = require('../controllers/clientController');
 
-router.get('/client', clientController.getClient);
+router.get('/client', clientController.getClients);
 router.post('/client', clientController.AddClient);
 router.put('/client' ,clientController.UpdateClient);
 router.delete('/client',clientController.deleteClient);
