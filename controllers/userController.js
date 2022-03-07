@@ -44,6 +44,8 @@ const addUser = async (req, res) => {
         USER_PASSWORD
     } = req.body;
 
+    console.log(req.body)
+
     const USER_PASSWORD_HASH = await bcrypt.hash(USER_PASSWORD, 10);
 
     const sp = 'CALL SP_INS_USER(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';

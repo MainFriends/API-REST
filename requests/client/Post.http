@@ -1,0 +1,12 @@
+POST http://Localhost:4000/api/client
+Content-Type: application/json
+
+{
+
+"IDENTITY":"080119987456",
+"FIRST_NAME":"Dereck",
+"LAST_NAME":"Rodriguez",
+"ADDRESS":"Villa Nueva",
+"NUM_PHONE_ONE":98745612
+
+}

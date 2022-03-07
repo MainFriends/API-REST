@@ -1,0 +1,11 @@
+PUT  http://Localhost:4000/api/client
+Content-Type: application/json
+
+{
+
+"IDENTITY":"0801199920724",
+"FIRST_NAME":"Dereck",
+"LAST_NAME":"Rodriguez",
+"ADDRESS":"cerro grande",
+"NUM_PHONE_ONE":98745612 
+}

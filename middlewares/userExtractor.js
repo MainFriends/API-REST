@@ -20,4 +20,4 @@ const userExtractor = (req, res, next) => {
     }
 }
 
-module.exports = userExtractor;
+module.exports = userExtractor; 
