@@ -1,17 +1,6 @@
 const mysqlConnect = require('../config');
 
 const getDetail = (req, res) => {
-    const sp = 'CALL SP_SELL_PURCHASE_DETAIL(?)';
-    mysqlConnect.query(sp,[0], (err, result) => {
-        if(err){
-            res.status(500).send({message: "Error en el servidor."});
-        }else{
-            res.status(200).json(result[0]);
-        }
-    });
-};
-
-const getDetail = (req, res) => {
     const {codDetail} = req.params;
     const sp = 'CALL SP_SELL_PURCHASE_DETAIL(?)';
     mysqlConnect.query(sp, [codDetail] ,(err, result) => {
@@ -95,7 +84,6 @@ const updateDetail = (req,res)=>{
         };
 
         module.exports = {
-            getDetail,
             getDetail,
             addDetail,
             updateDetail,

@@ -1,7 +1,7 @@
 const mysqlConnect = require('../config');
 
-const getPurchase = (req, res) => {
-    const sp = 'CALL SP_SELL_PURCHASE_INVOICE(?)';
+const getPurchases = (req, res) => {
+    const sp = 'CALL SP_SEL_PURCHASE_INVOICE(?)';
     mysqlConnect.query(sp,[0], (err, result) => {
         if(err){
             res.status(500).send({message: "Error en el servidor."});
@@ -13,7 +13,7 @@ const getPurchase = (req, res) => {
 
 const getPurchase = (req, res) => {
     const {codInvoice} = req.params;
-    const sp = 'CALL SP_SELL_PURCHASE_INVOICE(?)';
+    const sp = 'CALL SP_SEL_PURCHASE_INVOICE(?)';
     mysqlConnect.query(sp, [codInvoice] ,(err, result) => {
         if(err){
             res.status(500).send({message: "Error en el servidor."});
@@ -24,35 +24,36 @@ const getPurchase = (req, res) => {
 };
 
 const addPurchase = (req,res)=>{
-const {
-    SUBTOTAL,
-    TOT_DISCOUNT ,
-    TOT_ISV,
-    TOT_PURCHASE,
-    TYP_TO_PURCHASE,
-    COD_TYP_PAY,
-    DAT_INVOICE,
-    COD_ORDER
-}= req.body;
+    const {
+        SUBTOTAL,
+        TOT_DISCOUNT ,
+        TOT_ISV,
+        TOT_PURCHASE,
+        TYP_TO_PURCHASE,
+        COD_TYP_PAY,
+        DAT_INVOICE,
+        COD_ORDER
+    }= req.body;
 
-const sp = 'CALL SP_ADD_PURCHASE_INVOICE(?,?,?,?,?,?,?,?)';
+    const sp = 'CALL SP_INS_PURCHASE_INVOICE(?,?,?,?,?,?,?,?)';
 
-mysqlConnect.query(sp,
-[
-    SUBTOTAL,
-    TOT_DISCOUNT ,
-    TOT_ISV,
-    TOT_PURCHASE,
-    TYP_TO_PURCHASE,
-    COD_TYP_PAY,
-    DAT_INVOICE,
-    COD_ORDER
-], (err) => {
-    if(err){
-        res.status(400).send({message: err.message});
-    }else{
-        res.status(201).send({message: 'Transaccion completada.'});
-    }
+    mysqlConnect.query(sp,
+    [
+        SUBTOTAL,
+        TOT_DISCOUNT ,
+        TOT_ISV,
+        TOT_PURCHASE,
+        TYP_TO_PURCHASE,
+        COD_TYP_PAY,
+        DAT_INVOICE,
+        COD_ORDER
+    ], (err) => {
+        if(err){
+            const message = err.message.split(': ')[1];
+            res.status(400).send({message});
+        }else{
+            res.status(201).send({message: 'Transaccion completada.'});
+        }
 }); 
 };  
 
@@ -73,6 +74,7 @@ const updatePurchase = (req,res)=>{
 
     mysqlConnect.query(sp,
         [
+            codInvoice,
             SUBTOTAL,
             TOT_DISCOUNT ,
             TOT_ISV,
@@ -83,7 +85,8 @@ const updatePurchase = (req,res)=>{
             COD_ORDER
         ], (err) => {
             if(err){
-                res.status(400).send({message: err.message});
+                const message = err.message.split(': ')[1];
+                res.status(400).send({message});
             }else{
                 res.status(201).send({message: 'Transaccion completada.'});
             }
@@ -103,7 +106,7 @@ const updatePurchase = (req,res)=>{
         };
 
         module.exports = {
-            getPurchase,
+            getPurchases,
             getPurchase,
             addPurchase,
             updatePurchase,

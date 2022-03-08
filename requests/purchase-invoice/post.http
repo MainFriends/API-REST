@@ -1,0 +1,13 @@
+POST http://localhost:4000/api/purchase-invoice
+Content-Type: application/json
+
+{
+    "SUBTOTAL": 100,
+    "TOT_DISCOUNT": 100 ,
+    "TOT_ISV": 100,
+    "TOT_PURCHASE": 100,
+    "TYP_TO_PURCHASE": "Credito",
+    "COD_TYP_PAY": 1,
+    "DAT_INVOICE": "2020-12-02",
+    "COD_ORDER": "2"
+}
