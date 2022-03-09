@@ -22,7 +22,7 @@ const {
     TOTAL
 }= req.body;
 
-const sp = 'CALL SP_ADD_PURCHASE_DETAIL(?,?,?,?,?,?,?,?)';
+const sp = 'CALL SP_INS_PURCHASE_DETAIL(?,?,?,?,?,?,?,?)';
 
 mysqlConnect.query(sp,
 [
@@ -34,7 +34,8 @@ mysqlConnect.query(sp,
     TOTAL
 ], (err) => {
     if(err){
-        res.status(400).send({message: err.message});
+        const message = err.message.split(': ')[1];
+            res.status(400).send({message});
     }else{
         res.status(201).send({message: 'Accion completada.'});
     }
@@ -52,7 +53,7 @@ const updateDetail = (req,res)=>{
         TOTAL
     }= req.body;
 
-    const sp = 'CALL SP_ADD_PURCHASE_PURCHASE(?,?,?,?,?,?,?,?)';
+    const sp = 'CALL SP_UPD_PURCHASE_PURCHASE(?,?,?,?,?,?,?,?)';
 
     mysqlConnect.query(sp,
         [
@@ -64,7 +65,8 @@ const updateDetail = (req,res)=>{
             TOTAL
         ], (err) => {
             if(err){
-                res.status(400).send({message: err.message});
+                const message = err.message.split(': ')[1];
+                res.status(400).send({message});
             }else{
                 res.status(201).send({message: 'Accion completada.'});
             }

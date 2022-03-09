@@ -35,7 +35,7 @@ const addPurchase = (req,res)=>{
         COD_ORDER
     }= req.body;
 
-    const sp = 'CALL SP_INS_PURCHASE_INVOICE(?,?,?,?,?,?,?,?)';
+    const sp = 'CALL SP_INS_PURCHASE_INVOICE(?,?,?,?,?,?,?,?,?)';
 
     mysqlConnect.query(sp,
     [
@@ -70,7 +70,7 @@ const updatePurchase = (req,res)=>{
         COD_ORDER
     }= req.body;
 
-    const sp = 'CALL SP_ADD_PURCHASE_INVOICE(?,?,?,?,?,?,?,?)';
+    const sp = 'CALL SP_UPD_PURCHASE_INVOICE(?,?,?,?,?,?,?,?,?)';
 
     mysqlConnect.query(sp,
         [
