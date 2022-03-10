@@ -5,6 +5,8 @@ require('dotenv').config();
 
 //importamos las api routes
 const user = require('./routes/user');
+const order = require('./routes/order');
+const orderDetail = require('./routes/order-detail');
 
 //crear el servidor
 const app = express();
@@ -15,6 +17,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 //registrar rutas
 app.use('/api', user);
+app.use('/api/', order);
+app.use('/api/', orderDetail);
 
 //asignar un puerto y levantar el servidor
 const port = process.env.PORT;
