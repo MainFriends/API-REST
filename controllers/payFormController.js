@@ -78,10 +78,11 @@ const updatePayForm = (req, res) => {
         NET_SALARY,
         DAT_PAYMENT
     ], (err) => {
-        if(err) {
-            res.status(304).send({message: err.message});
+        if(err){
+            const message = err.message.split(': ')[1];
+            res.status(500).send({message});
         }else{
-            res.status(200).send({message: 'La planilla fue actualizada correctamente'})
+            res.status(200).send({message: 'La cuota fue eliminada correctamente'});
         }
     })
 }

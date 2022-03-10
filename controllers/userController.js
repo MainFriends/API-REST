@@ -16,9 +16,10 @@ const getUser = (req, res) => {
     query = `SELECT * FROM USER WHERE COD_USER = ${codUser}`;
     mysqlConnect.query(query, (err, result) => {
         if(err){
-            res.status(500).send({message: "Error en el servidor."});
+            const message = err.message.split(': ')[1];
+            res.status(500).send({message});
         }else{
-            res.status(200).json(result)
+            res.status(200).send({message: 'La cuota fue eliminada correctamente'});
         }
     });
 };

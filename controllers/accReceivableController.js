@@ -39,10 +39,11 @@ const addAccReceivable = (req, res) => {
         TOT_BALANCE,
         DAT_LIMIT
     ], (err) => {
-        if(err) {
-            res.status(4000).send({message: err.message});
+        if(err){
+            const message = err.message.split(': ')[1];
+            res.status(500).send({message});
         }else{
-            res.status(201).send({message: 'La planilla se ha registrado correctamente'});
+            res.status(200).send({message: 'La cuota fue eliminada correctamente'});
         }
     })
 }
