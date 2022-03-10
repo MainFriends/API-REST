@@ -8,6 +8,6 @@ Content-Type: application/json
     "TOT_PURCHASE": 1000,
     "TYP_TO_PURCHASE": "Credito",
     "COD_TYP_PAY": 2,
-    "DAT_INVOICE": "2020-12-02",
-    "COD_ORDER": ""
+    "DAT_INVOICE": "2022-07-13",
+    "COD_ORDER": "1"
 }

@@ -32,7 +32,8 @@ const addPurchase = (req,res)=>{
         TYP_TO_PURCHASE,
         COD_TYP_PAY,
         DAT_INVOICE,
-        COD_ORDER
+        COD_ORDER,
+        COD_USER
     }= req.body;
 
     const sp = 'CALL SP_INS_PURCHASE_INVOICE(?,?,?,?,?,?,?,?,?)';
@@ -46,7 +47,8 @@ const addPurchase = (req,res)=>{
         TYP_TO_PURCHASE,
         COD_TYP_PAY,
         DAT_INVOICE,
-        COD_ORDER
+        COD_ORDER,
+        COD_USER
     ], (err) => {
         if(err){
             const message = err.message.split(': ')[1];
@@ -67,22 +69,24 @@ const updatePurchase = (req,res)=>{
         TYP_TO_PURCHASE,
         COD_TYP_PAY,
         DAT_INVOICE,
-        COD_ORDER
+        COD_ORDER,
+        COD_USER
     }= req.body;
 
-    const sp = 'CALL SP_UPD_PURCHASE_INVOICE(?,?,?,?,?,?,?,?,?)';
+    const sp = 'CALL SP_UPD_PURCHASE_INVOICE(?,?,?,?,?,?,?,?,?,?)';
 
     mysqlConnect.query(sp,
         [
             codInvoice,
             SUBTOTAL,
-            TOT_DISCOUNT ,
+            TOT_DISCOUNT,
             TOT_ISV,
             TOT_PURCHASE,
             TYP_TO_PURCHASE,
             COD_TYP_PAY,
             DAT_INVOICE,
-            COD_ORDER
+            COD_ORDER,
+            COD_USER
         ], (err) => {
             if(err){
                 const message = err.message.split(': ')[1];
