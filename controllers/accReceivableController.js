@@ -43,7 +43,7 @@ const addAccReceivable = (req, res) => {
             const message = err.message.split(': ')[1];
             res.status(500).send({message});
         }else{
-            res.status(200).send({message: 'La cuota fue eliminada correctamente'});
+            res.status(200).send({message: 'La cuenta por cobrar fue añadida correctamente'});
         }
     })
 }

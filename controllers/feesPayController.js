@@ -33,7 +33,7 @@ const addFeesPay = (req, res) => {
             const message = err.message.split(': ')[1];
             res.status(500).send({message});
         }else{
-            res.status(201).send({message: 'La cuota se ha efectuado correctamente'});
+            res.status(201).send({message: 'La cuota se ha añadido correctamente'});
         }
     })
 }
