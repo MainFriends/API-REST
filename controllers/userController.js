@@ -17,7 +17,8 @@ const getUser = (req, res) => {
     const sp = 'CALL SP_SEL_USER(?)';
     mysqlConnect.query(sp, [codUser], (err, result) => {
         if(err){
-            res.status(500).send({message: "Error en el servidor."});
+            const message = err.message.split(': ')[1];
+            res.status(500).send({message});
         }else{
             res.status(200).json(result[0])
         }

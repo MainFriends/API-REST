@@ -1,0 +1,9 @@
+POST http://localhost:4000/api/accounts-receivable
+Content-Type: application/json
+
+{
+    "COD_INVOICE" : 2,
+    "DESCRIPTION" : "Cobro pendiente de unos embutidos",
+    "TOT_BALANCE" : 330.50,
+    "DAT_LIMIT" : "2022-03-11"
+}
