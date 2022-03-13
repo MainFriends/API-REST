@@ -1,18 +1,31 @@
-
 const mysqlConnect= require('../config');
 
 
-const getSupplier=(req,res) => {
-    const query= 'SELECT * FROM SUPPLIER'
-    mysqlConnect.query(query,(err,result) =>{
-
+const getSuppliers=(req,res) => {
+    const sp= 'CALL SP_SEL_SUPPLIER(?)';
+    mysqlConnect.query(sp, [0], (err,result) =>{
         if(err){ 
-            res.status(500). send({message:'ERROR EN EL SERVIDOR'});
+        res.status(500). send({message:'ERROR EN EL SERVIDOR'});
         }else{
-        res.status(200).json(result);
+        res.status(200).json(result[0]);
+        console.log(req.supplier);
         };
     });
 };
+
+const getSupplier=(req,res) => {
+    const {codSupplier}= req.params;
+    const sp= 'CALL SP_SEL_SUPPLIER(?)';
+    mysqlConnect.query(sp,[codSupplier] ,(err,result) =>{
+
+        if(err){ 
+        res.status(500). send({message:'ERROR EN EL SERVIDOR'});
+        }else{
+        res.status(200).json(result[0]);
+        };
+    });
+};
+
 const AddSupplier= (req,res) =>{
     const {
                                 NAM_SUPPLIER,
@@ -58,9 +71,7 @@ const AddSupplier= (req,res) =>{
 
 const UpdateSupplier= (req,res) =>{
     const {codSupplier} = req.params;
-    console.log(codSupplier)
-
-    const {
+     const {
                                 NAM_SUPPLIER,
 								NAM_CONTACT,
 								LAST_NAM_CONTACT,
@@ -91,15 +102,15 @@ const UpdateSupplier= (req,res) =>{
         if(err){
             res.status(400). send({message: err.message});
         }else{
-            res.status(201).send({message:'El proveedor  no ha sido actualizado correctamente'});
+            res.status(201).send({message:'El proveedor ha sido actualizado correctamente'});
         }
     });
 
 }
 const deleteSupplier = (req, res) => {
-    const {cod_supplier} = req.params;
+    const {codSupplier} = req.params;
     const sp = `CALL SP_DEL_SUPPLIER(?)`;
-    mysqlConnect.query(sp, [cod_supplier], (err) => {
+    mysqlConnect.query(sp, [codSupplier], (err) => {
         if(err){
             res.status(304).send({message: err.message});
         }else{
@@ -109,6 +120,7 @@ const deleteSupplier = (req, res) => {
 };
 module.exports={
     getSupplier,
+    getSuppliers,
     AddSupplier,
     UpdateSupplier,
     deleteSupplier

@@ -3,17 +3,31 @@ const mysqlConnect= require('../config');
 
 
 const getClients=(req,res) => {
-    const query= 'SELECT * FROM CLIENT'
-    mysqlConnect.query(query,(err,result) => {
+    const sp= 'CALL SP_SEL_CLIENT(?)';
+    mysqlConnect.query(sp, [0], (err,result) =>{
+        if(err){ 
+        res.status(500). send({message:'ERROR EN EL SERVIDOR'});
+        }else{
+        res.status(200).json(result[0]);
+        console.log(req.client);
+        };
+    });
+};
+
+const getClient=(req,res) => {
+    const {codClient}= req.params;
+    const sp= 'CALL SP_SEL_CLIENT(?)';
+    mysqlConnect.query(sp,[codClient] ,(err,result) =>{
 
         if(err){ 
-            res.status(500). send({message:'ERROR EN EL SERVIDOR'});
+        res.status(500). send({message:'ERROR EN EL SERVIDOR'});
         }else{
-        res.status(200).json(result);
-        }
+        res.status(200).json(result[0]);
+        };
     });
 };
 const AddClient=  (req,res) =>{
+    
     const {
         IDENTITY,
         FIRST_NAME,
@@ -23,13 +37,7 @@ const AddClient=  (req,res) =>{
         NUM_PHONE_TWO = NULL,
         RTN 
     } = req.body
-
-    console.log(req.body)
-
-
-
-
-    const sp= 'CALL SP_INS_CLIENT(?,?,?,?,?,?,?)';
+const sp= 'CALL SP_INS_CLIENT(?,?,?,?,?,?,?)';
     mysqlConnect.query(sp,[
 
         IDENTITY,
@@ -46,36 +54,33 @@ const AddClient=  (req,res) =>{
         if(err){
             res.status(400). send({message: err.message});
         }else{
-            res.status(201).send({message:'El cliente  no ha sido registrado correctamente'});
+            res.status(201).send({message:'El cliente   ha sido registrado correctamente'});
         }
     });
 
 }
 
 const UpdateClient= (req,res) =>{
+    const {codClient} = req.params;
     const {
         IDENTITY,
         FIRST_NAME,
         LAST_NAME,
         ADDRESS ,
         NUM_PHONE_ONE,
-        NUM_PHONE_TWO=null,
-        RTN= null
+        NUM_PHONE_TWO= NULL,
+        RTN
 
     } = req.body
-
-    console.log(req.body)
-
-
-
-
-    const sp= 'CALL SP_UPD_CLIENT (?,?,?,?,?,?,?)';
+    
+ const sp= 'CALL SP_UPD_CLIENT(?,?,?,?,?,?,?,?)';
     mysqlConnect.query(sp,[
 
+        codClient,
         IDENTITY,
         FIRST_NAME,
         LAST_NAME,
-        ADDRESS ,
+        ADDRESS,
         NUM_PHONE_ONE,
         NUM_PHONE_TWO,
         RTN
@@ -85,7 +90,7 @@ const UpdateClient= (req,res) =>{
         if(err){
             res.status(400). send({message: err.message});
         }else{
-            res.status(201).send({message:'El cliente no ha sido actualizado correctamente'});
+            res.status(201).send({message:'El cliente  ha sido actualizado correctamente'});
         }
     });
 
@@ -103,9 +108,8 @@ const deleteClient = (req, res) => {
 };
 module.exports={
     getClients,
+    getClient,
     AddClient,
     UpdateClient,
     deleteClient
 }
-
-

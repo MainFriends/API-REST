@@ -2,12 +2,12 @@ POST http://localhost:4000/api/supplier
 Content-Type:application/json
 
 {
-	"NAM_SUPPLIER": "quesos juticalpa",
-	"NAM_CONTACT": "brenda",
+	"NAM_SUPPLIER": "quesos jutic",
+	"NAM_CONTACT": "alejandrta",
 	"LAST_NAM_CONTACT": "diaz",
-	"ADDRESS": "juticalpa olancho",
+	"ADDRESS": "jutiapa danli",
 	"NUM_PHONE_ONE": 98745623,
-	"EMAIL":"quesosbrenda@gmail.com",
-	"NAM_CITY": "juticaplpa",
+	"EMAIL":"quesosdanl@gmail.com",
+	"NAM_CITY": "juticapa",
 	"ZIP_CODE": 504
 }
