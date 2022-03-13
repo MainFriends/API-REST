@@ -56,7 +56,7 @@ const addPurchase = (req,res)=>{
         }else{
             res.status(201).send({message: 'Transaccion completada.'});
         }
-}); 
+    }); 
 };  
 
 const updatePurchase = (req,res)=>{
@@ -94,27 +94,27 @@ const updatePurchase = (req,res)=>{
             }else{
                 res.status(201).send({message: 'Transaccion completada.'});
             }
-        }); 
-        };  
+    }); 
+};  
 
-        const deletePurchase = (req, res) => {
-            const {codInvoice} = req.params;
-            const sp = 'CALL SP_DEL_PURCHASE_INVOICE(?)';
-            mysqlConnect.query(sp,[codInvoice], (err) => {
-                if(err){
-                    res.status(304).send({message: err.message});
-                }else{
-                    res.status(200).send({message: 'Transaccion completada.'});
-                }
-            })
-        };
+const deletePurchase = (req, res) => {
+    const {codInvoice} = req.params;
+    const sp = 'CALL SP_DEL_PURCHASE_INVOICE(?)';
+    mysqlConnect.query(sp,[codInvoice], (err) => {
+        if(err){
+            res.status(304).send({message: err.message});
+        }else{
+            res.status(200).send({message: 'Transaccion completada.'});
+        }
+    })
+};
 
-        module.exports = {
-            getPurchases,
-            getPurchase,
-            addPurchase,
-            updatePurchase,
-            deletePurchase
-        };
+module.exports = {
+    getPurchases,
+    getPurchase,
+    addPurchase,
+    updatePurchase,
+    deletePurchase
+};
 
 
