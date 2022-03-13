@@ -2,17 +2,17 @@ POST http://localhost:4001/api/user
 Content-Type: application/json
 
 {
-    "IDENTITY": "080119990531",
-    "FIRST_NAME": "Mendel",
-    "MIDDLE_NAME": "Eduardo",
-    "LAST_NAME": "Aguilar",
-    "GENDER": "M",
-    "NUM_PHONE_ONE": 88795976,
-    "NUM_PHONE_REFERENCE": 78451236,
-    "DAT_BIRTHDAY": "1998-02-12",
+    "IDENTITY": "0616196600158",
+    "FIRST_NAME": "ADA",
+    "MIDDLE_NAME": "ESTELA",
+    "LAST_NAME": "RODRIGUEZ",
+    "GENDER": "F",
+    "NUM_PHONE_ONE": 90234590,
+    "NUM_PHONE_REFERENCE": 89781234,
+    "DAT_BIRTHDAY": "1966-02-12",
     "NAM_CITY": "Tegucigalpa",
-    "ADDRESS": "Res. Plaza",
+    "ADDRESS": "Res.CAÑADA",
     "COD_ROLE": 1,
-    "USER_EMAIL": "mendel@hotmail.com",
+    "USER_EMAIL": "ADA@hotmail.com",
     "USER_PASSWORD": "1234"
 }

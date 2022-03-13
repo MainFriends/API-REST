@@ -1,8 +1,8 @@
-PUT http://localhost:4001/api/purchase-invoice/7
+PUT http://localhost:4001/api/purchase-invoice/8
 Content-Type: application/json
 
 {
-    "COD_INVOICE":,
+    "COD_INVOICE":"",
     "SUBTOTAL": 100,
     "TOT_DISCOUNT": 500 ,
     "TOT_ISV": 3000,
@@ -11,5 +11,5 @@ Content-Type: application/json
     "COD_TYP_PAY": 1,
     "DAT_INVOICE": "2022-12-10",
     "COD_ORDER": "1",
-    "COD_USER": "2"
+    "COD_USER": "1"
 }

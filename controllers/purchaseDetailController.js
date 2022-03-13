@@ -13,6 +13,12 @@ const getDetail = (req, res) => {
 };
 
 const addDetail = (req,res)=>{
+
+const data = req.body;
+
+const sp = 'CALL SP_INS_PURCHASE_DETAIL(?,?,?,?,?,?,?,?)';
+
+data.foreach(factura => {
 const {
     COD_INVOICE,
     COD_PRODUCT ,
@@ -20,27 +26,29 @@ const {
     CANT_PRODUCTS,
     DISCOUNT,
     TOTAL
-}= req.body;
+} = factura;
 
-const sp = 'CALL SP_INS_PURCHASE_DETAIL(?,?,?,?,?,?,?,?)';
-
-mysqlConnect.query(sp,
-[
+mysqlConnect.query(sp,[
     COD_INVOICE,
     COD_PRODUCT ,
     PRICE,
     CANT_PRODUCTS,
     DISCOUNT,
     TOTAL
-], (err) => {
+]);
+    
+});
+(err) => {
     if(err){
         const message = err.message.split(': ')[1];
             res.status(400).send({message});
     }else{
         res.status(201).send({message: 'Accion completada.'});
     }
-}); 
-};  
+    
+}; 
+
+
 
 const updateDetail = (req,res)=>{
     const {codDetail} = req.params;
@@ -53,10 +61,10 @@ const updateDetail = (req,res)=>{
         TOTAL
     }= req.body;
 
-    const sp = 'CALL SP_UPD_PURCHASE_PURCHASE(?,?,?,?,?,?,?,?)';
+    const sp = 'CALL SP_UPD_PURCHASE_DETAIL(?,?,?,?,?,?,?,?)';
 
     mysqlConnect.query(sp,
-        [
+        [     codDetail,
             COD_INVOICE,
             COD_PRODUCT ,
             PRICE,
@@ -91,4 +99,4 @@ const updateDetail = (req,res)=>{
             updateDetail,
             deleteDetail
         };
-
+};
