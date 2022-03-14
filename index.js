@@ -1,4 +1,4 @@
-//importamos los paquetes
+/* IMPORTAR PAQUETES */
 const express = require('express');
 const bodyParser = require('body-parser');
 require('dotenv').config();
@@ -27,11 +27,16 @@ const orderDetail = require('./routes/order-detail');
 //compras
 const purchaseInvoice = require('./routes/purchaseInvoice');
 const purchaseDetail = require('./routes/purchaseDetail');
+//inventario
+const inventory = require('./routes/inventory')
+const inventoryDetail = require('./routes/inventoryDetail')
+const decrease = require('./routes/decrease')
+const returnProduct = require('./routes/returnProduct.js')
 
-//crear el servidor
+/* CREAR SERVIDOR */
 const app = express();
 
-//body-parser
+/* BODY-PARSER */
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -59,8 +64,13 @@ app.use('/api', orderDetail);
 //compras
 app.use('/api', purchaseInvoice);
 app.use('/api', purchaseDetail)
+//inventario
+app.use('/api', inventory)
+app.use('/api', inventoryDetail)
+app.use('/api', decrease)
+app.use('/api', returnProduct)
 
-//asignar un puerto y levantar el servidor
+/* ASIGNAR PUERTO Y LEVANTAR SERVIDOR */
 const port = process.env.PORT;
 app.listen(port, () => {
     console.log(`El servidor se esta ejecutando en el puerto ${port}`)

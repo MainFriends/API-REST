@@ -1,2 +1,2 @@
 GET http://localhost:4000/api/sale-detail/2
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDT0RfUk9MRSI6MSwiRklSU1RfTkFNRSI6IlBlZHJvIiwiTEFTVF9OQU1FIjoiU2FuY2hleiIsImlhdCI6MTY0NzIyNzA0MH0.zijSBOxDf7_X5VDMu6NhfYUGhrMFUrZreDBFhAfyXzc
+Authorization: Bearer 
