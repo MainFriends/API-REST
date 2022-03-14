@@ -1,2 +1,2 @@
-get  http://Localhost:4000/api/client/3
+GET  http://Localhost:4000/api/client
 Content-Type: application/json

@@ -1,4 +1,4 @@
-put http://localhost:4000/api/supplier/1
+put http://localhost:4000/api/supplier/4
 Content-Type:application/json
 
 {

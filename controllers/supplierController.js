@@ -26,7 +26,7 @@ const getSupplier=(req,res) => {
     });
 };
 
-const AddSupplier= (req,res) =>{
+const addSupplier= (req,res) =>{
     const {
                                 NAM_SUPPLIER,
 								NAM_CONTACT,
@@ -69,7 +69,7 @@ const AddSupplier= (req,res) =>{
 
 }
 
-const UpdateSupplier= (req,res) =>{
+const updateSupplier= (req,res) =>{
     const {codSupplier} = req.params;
      const {
                                 NAM_SUPPLIER,
@@ -121,8 +121,8 @@ const deleteSupplier = (req, res) => {
 module.exports={
     getSupplier,
     getSuppliers,
-    AddSupplier,
-    UpdateSupplier,
+    addSupplier,
+    updateSupplier,
     deleteSupplier
 }
 

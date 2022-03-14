@@ -1,4 +1,4 @@
-put  http://Localhost:4000/api/client/2
+put  http://Localhost:4000/api/client/1
 Content-Type: application/json
 
 {

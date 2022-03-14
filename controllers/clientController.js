@@ -26,7 +26,7 @@ const getClient=(req,res) => {
         };
     });
 };
-const AddClient=  (req,res) =>{
+const addClient=  (req,res) =>{
     
     const {
         IDENTITY,
@@ -52,7 +52,8 @@ const sp= 'CALL SP_INS_CLIENT(?,?,?,?,?,?,?)';
     ], (err)=> {
 
         if(err){
-            res.status(400). send({message: err.message});
+            const message = err.message.split(': ')[1];
+            res.status(400). send({message});
         }else{
             res.status(201).send({message:'El cliente   ha sido registrado correctamente'});
         }
@@ -60,7 +61,7 @@ const sp= 'CALL SP_INS_CLIENT(?,?,?,?,?,?,?)';
 
 }
 
-const UpdateClient= (req,res) =>{
+const updateClient= (req,res) =>{
     const {codClient} = req.params;
     const {
         IDENTITY,
@@ -88,7 +89,8 @@ const UpdateClient= (req,res) =>{
     ], (err)=> {
 
         if(err){
-            res.status(400). send({message: err.message});
+            const message = err.message.split(': ')[1];
+            res.status(400). send({message});
         }else{
             res.status(201).send({message:'El cliente  ha sido actualizado correctamente'});
         }
@@ -96,11 +98,12 @@ const UpdateClient= (req,res) =>{
 
 }
 const deleteClient = (req, res) => {
-    const {cod_client} = req.params;
+    const {codClient} = req.params;
     const sp = `CALL SP_DEL_CLIENT(?)`;
-    mysqlConnect.query(sp, [cod_client], (err) => {
+    mysqlConnect.query(sp, [codClient], (err) => {
         if(err){
-            res.status(304).send({message: err.message});
+            const message = err.message.split(': ')[1];
+            res.status(400). send({message});
         }else{
             res.status(200).send({message: 'El cliente ha sido eliminado exitosamente.'});
         }
@@ -109,7 +112,7 @@ const deleteClient = (req, res) => {
 module.exports={
     getClients,
     getClient,
-    AddClient,
-    UpdateClient,
+    addClient,
+    updateClient,
     deleteClient
 }
