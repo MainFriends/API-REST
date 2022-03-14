@@ -1,0 +1,2 @@
+POST http://localhost:4001/api/purchase-detail/
+Content-Type: application/json

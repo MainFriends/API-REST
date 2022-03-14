@@ -24,6 +24,9 @@ const notifications = require('./routes/notifications');
 //ordenes
 const order = require('./routes/order');
 const orderDetail = require('./routes/order-detail');
+//compras
+const purchaseInvoice = require('./routes/purchaseInvoice');
+const purchaseDetail = require('./routes/purchaseDetail');
 
 //crear el servidor
 const app = express();
@@ -53,6 +56,9 @@ app.use('/api', notifications);
 //ordenes
 app.use('/api/', order);
 app.use('/api/', orderDetail);
+//compras
+app.use('/api', purchaseInvoice);
+app.use('/api ', purchaseDetail)
 
 //asignar un puerto y levantar el servidor
 const port = process.env.PORT;
