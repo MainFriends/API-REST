@@ -3,9 +3,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 require('dotenv').config();
 
-//importamos las api routes
-const user = require('./routes/user');
-const login = require('./routes/login');
+/* IMPORTAR API ROUTES */
+//contabilidad
 const payForm = require('./routes/payForm');
 const accReceivable = require('./routes/accReceivable');
 const accPay = require('./routes/accPay');
@@ -13,8 +12,14 @@ const feesReceivable = require('./routes/feesReceivable');
 const feesPay = require('./routes/feesPay');
 const salesDiscounts = require('./routes/salesDiscounts');
 const salesReturns = require('./routes/salesReturns');
+//ventas
 const saleInvoice = require('./routes/saleInvoice');
 const saleDetail = require('./routes/saleDetail');
+//usuarios
+const login = require('./routes/login');
+const user = require('./routes/user');
+const supplier= require('./routes/supplier');
+const client= require('./routes/client')
 const notifications = require('./routes/notifications');
 
 //crear el servidor
@@ -24,9 +29,8 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-//registrar rutas
-app.use('/api', user);
-app.use('/api', login);
+/* REGISTRAR RUTAS */
+//contabilidad
 app.use('/api', payForm);
 app.use('/api/', accReceivable);
 app.use('/api/', accPay);
@@ -34,9 +38,14 @@ app.use('/api', feesReceivable);
 app.use('/api', feesPay);
 app.use('/api', salesDiscounts);
 app.use('/api', salesReturns);
-
+//ventas
 app.use('/api', saleInvoice);
 app.use('/api', saleDetail);
+//usuarios
+app.use('/api', user);
+app.use('/api', login);
+app.use('/api', supplier); 
+app.use('/api', client); 
 app.use('/api', notifications);
 
 //asignar un puerto y levantar el servidor
