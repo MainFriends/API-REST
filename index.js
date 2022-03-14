@@ -13,6 +13,9 @@ const feesReceivable = require('./routes/feesReceivable');
 const feesPay = require('./routes/feesPay');
 const salesDiscounts = require('./routes/salesDiscounts');
 const salesReturns = require('./routes/salesReturns');
+const saleInvoice = require('./routes/saleInvoice');
+const saleDetail = require('./routes/saleDetail');
+const notifications = require('./routes/notifications');
 
 //crear el servidor
 const app = express();
@@ -32,6 +35,9 @@ app.use('/api', feesPay);
 app.use('/api', salesDiscounts);
 app.use('/api', salesReturns);
 
+app.use('/api', saleInvoice);
+app.use('/api', saleDetail);
+app.use('/api', notifications);
 
 //asignar un puerto y levantar el servidor
 const port = process.env.PORT;
