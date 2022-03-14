@@ -21,6 +21,9 @@ const user = require('./routes/user');
 const supplier= require('./routes/supplier');
 const client= require('./routes/client')
 const notifications = require('./routes/notifications');
+//ordenes
+const order = require('./routes/order');
+const orderDetail = require('./routes/order-detail');
 
 //crear el servidor
 const app = express();
@@ -47,6 +50,9 @@ app.use('/api', login);
 app.use('/api', supplier); 
 app.use('/api', client); 
 app.use('/api', notifications);
+//ordenes
+app.use('/api/', order);
+app.use('/api/', orderDetail);
 
 //asignar un puerto y levantar el servidor
 const port = process.env.PORT;
