@@ -33,7 +33,7 @@ const addDetail = (req, res) => {
             DISCOUNT,
             TOTAL
         ]);
-    })
+    });
 
     res.status(201).send({message: 'Transacción completada.'})
 };
