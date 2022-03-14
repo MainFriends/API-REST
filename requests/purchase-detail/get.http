@@ -1,2 +1,2 @@
-GET http://localhost:4001/api/purchase-invoice/
+GET http://localhost:4001/api/purchase-detail/2
 Content-Type: application/json

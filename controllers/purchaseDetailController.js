@@ -16,11 +16,10 @@ const addDetail = (req,res)=>{
 
     const data = req.body;
 
-    const sp = 'CALL SP_INS_PURCHASE_DETAIL(?,?,?,?,?,?)';
+    const sp = 'CALL SP_INS_PURCHASE_DETAIL(?,?,?,?,?)';
 
-    data.foreach(factura => {
+    data.forEach(factura => {
         const {
-            COD_INVOICE,
             COD_PRODUCT ,
             PRICE,
             CANT_PRODUCTS,
@@ -29,7 +28,6 @@ const addDetail = (req,res)=>{
         } = factura;
 
         mysqlConnect.query(sp,[
-            COD_INVOICE,
             COD_PRODUCT ,
             PRICE,
             CANT_PRODUCTS,

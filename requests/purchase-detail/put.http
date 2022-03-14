@@ -1,2 +1,2 @@
-PUT http://localhost:4001/api/purchase-invoice/
+PUT http://localhost:4001/api/purchase-detail/1
 Content-Type: application/json

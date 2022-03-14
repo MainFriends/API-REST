@@ -1,4 +1,4 @@
-POST http://localhost:4001/api/purchase-invoice/
+POST http://localhost:4001/api/purchase-invoice
 Content-Type: application/json
 
 {
@@ -9,5 +9,6 @@ Content-Type: application/json
     "TYP_TO_PURCHASE": "Credito",
     "COD_TYP_PAY": 2,
     "DAT_INVOICE": "2022-07-13",
-    "COD_ORDER": "1"
+    "COD_ORDER": "2",
+    "COD_USER": 1
 }

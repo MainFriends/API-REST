@@ -38,8 +38,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 /* REGISTRAR RUTAS */
 //contabilidad
 app.use('/api', payForm);
-app.use('/api/', accReceivable);
-app.use('/api/', accPay);
+app.use('/api', accReceivable);
+app.use('/api', accPay);
 app.use('/api', feesReceivable);
 app.use('/api', feesPay);
 app.use('/api', salesDiscounts);
@@ -54,11 +54,11 @@ app.use('/api', supplier);
 app.use('/api', client); 
 app.use('/api', notifications);
 //ordenes
-app.use('/api/', order);
-app.use('/api/', orderDetail);
+app.use('/api', order);
+app.use('/api', orderDetail);
 //compras
 app.use('/api', purchaseInvoice);
-app.use('/api ', purchaseDetail)
+app.use('/api', purchaseDetail)
 
 //asignar un puerto y levantar el servidor
 const port = process.env.PORT;

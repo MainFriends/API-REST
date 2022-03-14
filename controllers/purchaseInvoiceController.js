@@ -63,7 +63,7 @@ const updatePurchase = (req,res)=>{
     const {codInvoice} = req.params;
     const {
         SUBTOTAL,
-        TOT_DISCOUNT ,
+        TOT_DISCOUNT,
         TOT_ISV,
         TOT_PURCHASE,
         TYP_TO_PURCHASE,
