@@ -1,2 +1,27 @@
 PUT http://localhost:4001/api/purchase-detail/1
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDT0RfUk9MRSI6MSwiRklSU1RfTkFNRSI6Ikx1aXMiLCJMQVNUX05BTUUiOiJHYXJjaWEiLCJpYXQiOjE2NDYzNDkzODl9.BkFJDsJKUCWsP2bI0UAjqJc-rnFODARMFEIzBgko3vk
+
+[
+    {
+        "COD_PRODUCT":"1",
+        "PRICE": 20,
+        "CANT_PRODUCTS": 100,
+        "DISCOUNT":50,
+        "TOTAL": 20000
+    },
+    {
+        "COD_PRODUCT":"2",
+        "PRICE": 20,
+        "CANT_PRODUCTS": 100,
+        "DISCOUNT":50,
+        "TOTAL": 20000
+    },
+    {
+        "COD_PRODUCT":"3",
+        "PRICE": 20,
+        "CANT_PRODUCTS": 100,
+        "DISCOUNT":50,
+        "TOTAL": 20000
+    }
+]
